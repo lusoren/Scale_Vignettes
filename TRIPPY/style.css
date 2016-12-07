@@ -9,10 +9,12 @@ body {
 }
 
 #blue {
-    width: 110%;
+    width: 120%;
     height: 120%;
-    background-color: red;
+    background-color: blue;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: -2;
 }
 /* Scale canvas with resize attribute to full size */
