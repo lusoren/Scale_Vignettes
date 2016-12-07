@@ -69,7 +69,7 @@ function addPath() {
 
 function onResize(event) {
 	moveCounter++
-    if ((moveCounter-addTracker)>10) {
+    if ((moveCounter-addTracker)>5) {
         console.log("added");
         addTracker=moveCounter;
         addPath();
