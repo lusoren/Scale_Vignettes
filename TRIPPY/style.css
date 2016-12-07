@@ -4,12 +4,12 @@ body {
     margin: 0;
     overflow: hidden;
     height: 100%;
-
+    background-color: blue;
 }
 
 #blue {
-    width: 120%;
-    height: 120%;
+    width: 130%;
+    height: 130%;
     background-color: blue;
     position: fixed;
     top: 0;
