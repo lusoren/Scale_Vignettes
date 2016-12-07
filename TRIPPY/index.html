@@ -10,18 +10,9 @@ var width, height, center;
 var points = 3;
 var smooth = true;
 
-var paths=[];
-var pathCounter=0;
-
 initWidth = view.size.width;
 
-//var drawP = new Path({
-//    strokeColor: 'white',
-//    fillColor: 'white',
-//    strokeWidth: 2,
-//}); 
-
-var moveCounter=0;
+var moveCounter=1;
 var addTracker=0;
 
 console.log("started");
@@ -29,13 +20,15 @@ console.log("started");
 
 function initializePath(pathObject) {
 
-	var rgb= moveCounter % 255;
-	var color= "rgb(" + rgb + "," + rgb + "," + rgb + ")";
+	//var rgb= moveCounter % 255;
+	//var color= "rgb(" + rgb + "," + rgb + "," + rgb + ")";
     
    var path = new Path({
-        strokeColor: color,
-        strokeWidth: 1,
+        strokeWidth: 1
     });
+    var lightness = (moveCounter % 300)/300 ;
+	
+    path.strokeColor = {hue: 0, saturation: 0, lightness: lightness};
     
 	center = view.center;
 	width = view.size.width;
@@ -66,14 +59,24 @@ function initializePath(pathObject) {
     
 }
 
+var bool= true;
 
 function onResize(event) {
-	//moveCounter++
-    //if ((moveCounter-addTracker)>10) {
-        initializePath();
-        addTracker=moveCounter;        
-    //}
+	
+    if (bool==true) {
+       moveCounter++;
+	   
+    } else {
+        moveCounter--;
+    }
     
+    if (moveCounter==255 || moveCounter ==0) {
+		console.log("YASS QUEEENN");
+        bool= !bool;
+    }
+   
+    initializePath();
+
 }
 </script>
 </head>
