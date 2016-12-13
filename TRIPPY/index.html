@@ -6,7 +6,7 @@
 <script type="text/javascript" src="js/paper.js"></script>
 <!-- Load external PaperScript and associate it with myCanvas -->
 <script type="text/paperscript" canvas="myCanvas">
-var width, height, center;
+var width, height;
 var points = 3;
 var smooth = true;
 
@@ -17,16 +17,17 @@ var addTracker=0;
 
 console.log("started");
 
-
+initializePath();
 function initializePath(pathObject) {
+     
 
-     center = view.center;
 	width = view.size.width;
 	height = view.size.height / 2;
     
    var path = new Path({
         strokeWidth: 1,
         strokeColor: 'white'
+		
     });
     
 	path.segments = [];
@@ -34,13 +35,13 @@ function initializePath(pathObject) {
     path.add(view.bounds.topLeft);
     
 	for (var i = 1; i < points; i++) {
-		var point = new Point(width / points * i, center.y);
+		var point = new Point(width / points * i, height);
 		path.add(point);
 	}
     
     path.add(view.bounds.bottomRight);
     
-    var h = initWidth-view.size.width;
+    var h = initWidth-width;
     
 	for (var i = 1; i < points; i++) {
 		var sinSeed = h + (i + i % 10) * 100;
@@ -50,19 +51,18 @@ function initializePath(pathObject) {
         path.segments[i].point.y = yPos;
 	}
 	
-     path.smooth({ type: 'continuous' });
+	path.smooth({ type: 'continuous' });
     
 }
 
 function onResize(event) {
-	
+    
     initializePath();
-
 }
 </script>
 </head>
 <body>
 	<canvas id="myCanvas" resize></canvas>
-	<div id="blue"></div>
+
 </body>
 </html>

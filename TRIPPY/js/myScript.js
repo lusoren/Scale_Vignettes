@@ -1,4 +1,4 @@
-var width, height, center;
+var width, height;
 var points = 3;
 var smooth = true;
 
@@ -9,16 +9,17 @@ var addTracker=0;
 
 console.log("started");
 
-
+initializePath();
 function initializePath(pathObject) {
+     
+     document.getElementById("myCanvas").style.w
 
-     center = view.center;
 	width = view.size.width;
 	height = view.size.height / 2;
     
    var path = new Path({
         strokeWidth: 1,
-        strokeColor: 'white'
+        strokeColor: 'black'
     });
     
 	path.segments = [];
@@ -26,13 +27,13 @@ function initializePath(pathObject) {
     path.add(view.bounds.topLeft);
     
 	for (var i = 1; i < points; i++) {
-		var point = new Point(width / points * i, center.y);
+		var point = new Point(width / points * i, height);
 		path.add(point);
 	}
     
     path.add(view.bounds.bottomRight);
     
-    var h = initWidth-view.size.width;
+    var h = initWidth-width;
     
 	for (var i = 1; i < points; i++) {
 		var sinSeed = h + (i + i % 10) * 100;
@@ -41,13 +42,16 @@ function initializePath(pathObject) {
  
         path.segments[i].point.y = yPos;
 	}
-	
-     path.smooth({ type: 'continuous' });
     
 }
 
 function onResize(event) {
-	
-    initializePath();
+     
+     document.getElementById("blue").style.width= "100%";
+     document.getElementById("blue").style.height= "100%";s
+
+       initializePath();
+    
+    
 
 }
